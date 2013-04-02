@@ -9,8 +9,10 @@ class Libfreenect < Formula
 
   depends_on 'cmake' => :build
   depends_on 'libusb'
+  option :universal
 
   def install
+    ENV.universal_binary if build.universal?
     mkdir "build" do
       system "cmake", "..", *std_cmake_args
       system "make install"

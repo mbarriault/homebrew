@@ -1,16 +1,15 @@
 require 'formula'
 
-class Assimp < Formula
+class Assimp3 < Formula
   homepage 'http://assimp.sourceforge.net/'
-  url 'http://downloads.sourceforge.net/project/assimp/assimp-2.0/assimp--2.0.863-sdk.zip'
-  sha1 'eb6938c134e7110a96243570e52a8b860d15d915'
+  url 'http://sourceforge.net/projects/assimp/files/assimp-3.0/assimp--3.0.1270-source-only.zip'
+  version '3.0.1270'
+  sha1 'e80a3a4326b649ed6585c0ce312ed6dd68942834'
 
   depends_on 'cmake' => :build
   depends_on 'boost'
-  option :universal
 
   def install
-    ENV.universal_binary if build.universal?
     system "cmake", ".", *std_cmake_args
     system "make install"
   end
